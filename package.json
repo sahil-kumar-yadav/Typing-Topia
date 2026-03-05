@@ -1,0 +1,32 @@
+{
+  "name": "typing-topia",
+  "version": "1.0.0",
+  "description": "A typing speed test application to measure WPM, mistakes, and CPM",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve",
+    "lint": "eslint js/",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "typing",
+    "wpm",
+    "speed-test",
+    "education",
+    "game"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/Typing-Topia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/Typing-Topia/issues"
+  },
+  "homepage": "https://github.com/yourusername/Typing-Topia#readme"
+}
+

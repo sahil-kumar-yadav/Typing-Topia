@@ -1,45 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing master</title>
+    <meta name="description" content="Typing-Topia - A modern typing speed test application to improve your typing skills">
+    <meta name="keywords" content="typing test, wpm, typing speed, typing practice">
+    <meta name="author" content="Typing-Topia">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>Typing-Topia | Speed Typing Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<header>
-    <div class="titlebox">TypeTopia</div>
-</header>
 <body>
-    <div class="wrapper">
-        <input type="text" class="input-field">
-        <div class="content-box">
-            <div class="typing-text">
-                <p></p>
+    <div class="app-container">
+        <header class="main-header">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <h1 class="titlebox">TypeTopia</h1>
+            <p class="subtitle">Master your typing skills</p>
+        </header>
+        
+        <div class="control-panel">
+            <div class="time-selector">
+                <select id="time-select" aria-label="Select time duration">
+                    <option value="15">15 sec</option>
+                    <option value="30">30 sec</option>
+                    <option value="60" selected>60 sec</option>
+                    <option value="120">120 sec</option>
+                </select>
             </div>
-            <div class="content">
-                <ul class="result-details">
-                    <li class="time">
-                        <p>Time left:</p>
-                        <span><b>60</b>s</span>
-                    </li>
-                    <li class="mistake">
-                        <p>Mistakes:</p>
-                        <span>0</span>
-                    </li>
-                    <li class="wpm">
-                        <p>WPM:</p>
-                        <span>0</span>
-                    </li>
-                    <li class="cpm">
-                        <p>CPM:</p>
-                        <span>0</span>
-                    </li>
-                </ul>
-                <button>Try Again</button>
+            <button class="control-btn" id="restart-btn">
+                <span>↻</span> Restart
+            </button>
+        </div>
+        
+        <main class="wrapper">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
             </div>
+            
+            <input type="text" class="input-field" id="typing-input" aria-label="Typing input field" autocomplete="off">
+            
+            <div class="content-box">
+                <div class="typing-text" id="typing-display" role="textbox" aria-live="polite">
+                    <p></p>
+                </div>
+                
+                <div class="content">
+                    <ul class="result-details" role="list" aria-label="Typing statistics">
+                        <li class="stat-item time" aria-label="Time remaining">
+                            <p>Time</p>
+                            <span><b id="time-display">60</b>s</span>
+                        </li>
+                        <li class="stat-item mistake" aria-label="Mistakes count">
+                            <p>Mistakes</p>
+                            <span id="mistake-display">0</span>
+                        </li>
+                        <li class="stat-item wpm" aria-label="Words per minute">
+                            <p>WPM</p>
+                            <span id="wpm-display">0</span>
+                        </li>
+                        <li class="stat-item cpm" aria-label="Characters per minute">
+                            <p>CPM</p>
+                            <span id="cpm-display">0</span>
+                        </li>
+                        <li class="stat-item accuracy" aria-label="Accuracy percentage">
+                            <p>Accuracy</p>
+                            <span id="accuracy-display">100%</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="actions">
+                        <button class="btn-restart" id="try-again-btn" aria-label="Try again">
+                            <span class="btn-icon">↻</span> Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <span>Start typing to begin</span>
+                <kbd>Enter</kbd>
+                <span>to restart</span>
+                <kbd>Esc</kbd>
+                <span>to stop</span>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <p>© 2024 Typing-Topia. Practice makes perfect.</p>
+        </footer>
+    </div>
+    
+    <!-- Results Modal -->
+    <div class="modal-overlay" id="results-modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Test Complete! 🎉</h2>
+            <p class="modal-subtitle">Great job on your typing test</p>
+            
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat-label">Words Per Minute</div>
+                    <div class="modal-stat-value wpm" id="modal-wpm">0</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-label">Accuracy</div>
+                    <div class="modal-stat-value accuracy" id="modal-accuracy">0%</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-label">Characters</div>
+                    <div class="modal-stat-value" id="modal-cpm">0</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-label">Mistakes</div>
+                    <div class="modal-stat-value" id="modal-mistakes">0</div>
+                </div>
+            </div>
+            
+            <button class="modal-close" id="modal-close">Try Again</button>
         </div>
     </div>
+    
     <script src="js/paragraph.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
+
